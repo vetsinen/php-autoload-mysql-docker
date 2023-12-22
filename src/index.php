@@ -1,3 +1,9 @@
+<?php
+require_once (__DIR__ .'/vendor/autoload.php');
+
+$log = new Monolog\Logger('name');
+$film = new Filmforge\Film();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
