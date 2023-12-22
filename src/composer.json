@@ -1,0 +1,8 @@
+{
+    "require": {
+        "symfony/polyfill-mbstring": "^1.28",
+        "psr/log": "^3.0",
+        "nikic/php-parser": "^4.18",
+        "elasticemail/elasticemail-php": "^4.0"
+    }
+}
