@@ -11,20 +11,21 @@ RUN apt-get update \
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mysqli zip mbstring exif pcntl bcmath
 
-# Install Composer globally
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
 
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Copy the composer.json and composer.lock files for better Docker caching
-COPY composer.json composer.lock /var/www/html/
+#COPY composer.json composer.lock /var/www/html/
 
 # Install project dependencies
-RUN composer install --no-interaction --optimize-autoloader
+# RUN composer install --no-interaction --optimize-autoloader
 
 # Copy the application code to the container
-COPY . /var/www/html/
+#COPY . /var/www/html/
 
 
 # Expose port 80 for Apache

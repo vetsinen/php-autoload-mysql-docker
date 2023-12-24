@@ -1,6 +1,6 @@
 <?php
 
-namespace Filmforge;
+namespace Webdev\PhpStarter;
 
 class Film
 {

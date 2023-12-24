@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: php-web-app
+    container_name: php-starter-app
     ports:
       - "8080:80"
     volumes:
@@ -15,22 +15,22 @@ services:
 
   mysql:
     image: mysql:8.1
-    container_name: mysql-db
+    container_name: php-starter-mysql
     ports:
       - "3306:3306"
     env_file:
       - .env
     volumes:
-      - ./:/docker-entrypoint-initdb.d
+      - ./initsql:/docker-entrypoint-initdb.d
       - ./mysql-data:/var/lib/mysql
 
-#  composer:
-#    image: composer:2
-#    container_name: composer
-#    working_dir: /var/www/html
-#    volumes:
-#      - ./src:/var/www/html
-#    command: ["install", "--no-scripts"]
+  composer:
+    image: composer:2.6
+    container_name: composer
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    command: composer install --no-interaction --optimize-autoloader
 
 volumes:
   mysql_data:
